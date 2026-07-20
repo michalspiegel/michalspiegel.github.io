@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Posts | Michał Spiegel</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Blog Posts</h1>
+      <p>Posts are listed from newest to oldest.</p>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="blogs.html" aria-current="page">Blogs</a>
+        <a href="todos.html">Ideas &amp; TODOs</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <h2>Categories</h2>
+        <p class="category-list">
+          personal, philosophical, technical, research, proof-of-concept,
+          extended abstracts
+        </p>
+      </section>
+
+      <section>
+        <ul id="blog-list" class="card-list"></ul>
+      </section>
+    </main>
+
+    <script src="blogs.js"></script>
+  </body>
+</html>
