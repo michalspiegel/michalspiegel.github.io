@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ page.description | escape }}" />
+    <title>{{ page.title }} — {{ site.title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Main navigation">
+        <a class="wordmark" href="{{ '/' | relative_url }}">Michal Spiegel</a>
+        <button class="menu-button" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+          <span class="sr-only">Open menu</span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="{{ '/#about' | relative_url }}">about</a>
+          <a class="active" href="{{ '/blog/' | relative_url }}">blog</a>
+          <a href="{{ '/#publications' | relative_url }}">publications</a>
+          <a href="{{ '/#cv' | relative_url }}">cv</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <article class="article">
+        <a class="back-link" href="{{ '/blog/' | relative_url }}">← All posts</a>
+        <header class="article-header">
+          <p class="eyebrow">{{ page.status }} · {{ page.topic }}</p>
+          <h1>{{ page.title }}</h1>
+          <p class="article-dek">{{ page.description }}</p>
+          <p class="article-meta">
+            {{ site.author.name }} · {{ page.date | date: "%B %Y" }} ·
+          </p>
+        </header>
+
+        <div class="article-body">{{ content }}</div>
+      </article>
+    </main>
+
+    <footer>
+      <div class="shell footer-inner">
+        <p>© {{ site.time | date: "%Y" }} Michal Spiegel</p>
+        <p>Built with Markdown, Jekyll, and curiosity.</p>
+      </div>
+    </footer>
+
+    <script src="{{ '/assets/site.js' | relative_url }}"></script>
+  </body>
+</html>

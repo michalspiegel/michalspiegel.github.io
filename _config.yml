@@ -1,0 +1,13 @@
+title: Michal Spiegel
+description: Machine learning, interpretability, and notes from experiments.
+url: "https://michalspiegel.github.io"
+baseurl: ""
+
+author:
+  name: Michal Spiegel
+
+permalink: /blog/:title.html
+markdown: kramdown
+
+exclude:
+  - README.md

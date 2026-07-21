@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Michal Spiegel — machine learning engineer and interpretability researcher."
+    />
+    <title>Michal Spiegel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Main navigation">
+        <a class="wordmark" href="#about">Michal Spiegel</a>
+        <button class="menu-button" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+          <span class="sr-only">Open menu</span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a class="active" href="#about">about</a>
+          <a href="blog/">blog</a>
+          <a href="#publications">publications</a>
+          <a href="#cv">cv</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <section class="hero" id="about">
+        <div class="hero-copy">
+          <p class="eyebrow">Hello, I’m</p>
+          <h1>Michal Spiegel</h1>
+          <p class="affiliation">
+            Masaryk University · ML Engineer at
+            <a href="https://www.filevine.com/">Filevine</a>
+          </p>
+
+          <div class="intro">
+            <p>
+              I’m a master’s student at Masaryk University, interested in machine
+              learning and interpretability. Right now I spend a lot of time thinking
+              about positional encodings in Transformers — especially what small
+              models can actually learn with RoPE, and how they pull it off.
+            </p>
+            <p>
+              Alongside research, I work full-time as an ML Engineer at Filevine,
+              building retrieval and question-answering systems for very large
+              collections of legal documents. In short: lots of embeddings, lots of
+              evaluation, and an unreasonable number of PDFs.
+            </p>
+            <p>
+              I also enjoy taking research on the road. In 2025 I presented our work
+              at EMNLP in Suzhou and attended ACL in Vienna. In March 2026, I spent a
+              month in Japan with LLMc at the National Institute of
+              Informatics, benchmarking how robust language models are on olympiad
+              math problems.
+            </p>
+          </div>
+
+          <div class="social-links" aria-label="External profiles">
+            <a href="https://scholar.google.com/citations?user=YER5RWMAAAAJ&hl=en"
+              >Google Scholar ↗</a
+            >
+            <a href="https://github.com/michalspiegel">GitHub ↗</a>
+          </div>
+        </div>
+
+        <figure class="portrait-wrap">
+          <div class="portrait-fallback" aria-hidden="true">MS</div>
+          <img
+            class="portrait"
+            src="profile.jpg"
+            alt="Portrait of Michal Spiegel"
+            onerror="this.style.display='none'"
+          />
+        </figure>
+      </section>
+
+      <section class="section" id="news">
+        <div class="section-heading">
+          <p class="eyebrow">A few recent things</p>
+          <h2>news</h2>
+        </div>
+        <div class="news-list">
+          <article class="news-item">
+            <time datetime="2026-03">Mar 2026</time>
+            <p>
+              Spent a month at Japan’s National Institute of Informatics, working
+              with LLMc on robustness benchmarks for olympiad mathematics.
+            </p>
+          </article>
+          <article class="news-item">
+            <time datetime="2025-11">Nov 2025</time>
+            <p>
+              Presented our work on numerical representations in language models at
+              <a href="https://2025.emnlp.org/">EMNLP 2025</a> in Suzhou, China.
+            </p>
+          </article>
+          <article class="news-item">
+            <time datetime="2025-07">Jul 2025</time>
+            <p>
+              Went to <a href="https://2025.aclweb.org/">ACL 2025</a> in Vienna —
+              conveniently close to home, unusually good conference logistics.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="publications">
+        <div class="section-heading">
+          <p class="eyebrow">Selected work</p>
+          <h2>publications</h2>
+        </div>
+        <ol class="publication-list">
+          <li>
+            <a class="paper-title" href="https://arxiv.org/abs/2503.22395">
+              Negation: A Pink Elephant in the Large Language Models’ Room?
+            </a>
+            <p>
+              T. Vrabcová, M. Kadlčík, P. Sojka, M. Štefánik,
+              <strong>M. Spiegel</strong>
+            </p>
+            <p class="venue">arXiv, 2025</p>
+          </li>
+          <li>
+            <span class="paper-title">
+              Pre-trained Language Models Learn Remarkably Accurate Representations
+              of Numbers
+            </span>
+            <p>
+              M. Kadlčík, M. Štefánik, T. Mickus, J. Kuchař,
+              <strong>M. Spiegel</strong>
+            </p>
+            <p class="venue">EMNLP, 2025</p>
+          </li>
+          <li>
+            <span class="paper-title">
+              Attend or Perish: Benchmarking Attention in Algorithmic Reasoning
+            </span>
+            <p>
+              <strong>M. Spiegel</strong>, M. Štefánik, M. Kadlčík, J. Kuchař
+            </p>
+            <p class="venue">arXiv, 2025</p>
+          </li>
+          <li>
+            <span class="paper-title">
+              KInIT at SemEval-2024 Task 8: Fine-tuned LLMs for Multilingual
+              Machine-Generated Text Detection
+            </span>
+            <p><strong>M. Spiegel</strong>, D. Macko</p>
+            <p class="venue">SemEval, 2024</p>
+          </li>
+          <li>
+            <span class="paper-title">
+              IMGTB: A Framework for Machine-Generated Text Detection Benchmarking
+            </span>
+            <p><strong>M. Spiegel</strong>, D. Macko</p>
+            <p class="venue">ACL, 2024</p>
+          </li>
+          <li>
+            <span class="paper-title">
+              WebMap: Improving LLM Web Agents with Vector Databases and Semantic
+              Search for Web Pages
+            </span>
+            <p><strong>M. Spiegel</strong>, A. Horák</p>
+            <p class="venue">RASLAN, 2024</p>
+          </li>
+        </ol>
+        <a class="text-link" href="https://scholar.google.com/citations?user=YER5RWMAAAAJ&hl=en">
+          Everything else is on Google Scholar →
+        </a>
+      </section>
+
+      <section class="section cv-section" id="cv">
+        <div class="section-heading">
+          <p class="eyebrow">The compact version</p>
+          <h2>cv</h2>
+        </div>
+        <div class="cv-grid">
+          <div>
+            <h3>Now</h3>
+            <p>Master’s student, Masaryk University</p>
+            <p>Machine Learning Engineer, Filevine</p>
+          </div>
+          <div>
+            <h3>Research</h3>
+            <p>Interpretability, positional encodings, retrieval, and evaluation</p>
+            <p>Research intern, LLMc / NII, Japan · Mar 2026</p>
+          </div>
+        </div>
+        <p class="cv-note">
+          A proper PDF CV is coming later. For now, Scholar does most of the heavy
+          lifting.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell footer-inner">
+        <p>© <span id="year"></span> Michal Spiegel</p>
+        <p>Built with plain HTML, CSS, and curiosity.</p>
+      </div>
+    </footer>
+
+    <script src="assets/site.js"></script>
+  </body>
+</html>
