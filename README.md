@@ -20,7 +20,6 @@ title: "My post title"
 description: "The short summary shown on the blog page."
 status: Work in progress
 topic: Interpretability
-read_time: ~6 min read
 ---
 ```
 
