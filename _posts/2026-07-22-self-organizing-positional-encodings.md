@@ -6,17 +6,36 @@ status: Work in progress
 topic: Positional encodings
 ---
 
-I recently stumbled upon multidimensional RoPE that is used in Qwen3-VL models to add 2D positional information to image patches. Fascinated by this idea, I wondered whether this could not be applied to text as well. Specifically algorithms like addition and multiplication.
+I recently stumbled upon multimodal RoPE that is used in Qwen3-VL models to add 2D positional information to image patches. Fascinated by this idea, I wondered whether this could not be applied to text as well. Specifically algorithms like addition and multiplication.
 
-## **Hypothesis:** Applying MRoPE to long addition helps generalization
-Humans compute long addition naturally by aligning the two addition operands below each under and then adding digits of the same significance individually. We could express this positional adjustment using MRoPE. 
+## 1.1 What is MRoPE?
+MRoPE was originally used for adding positional information to image patches. Qwen3-VL models have 3 positional dimensions: temporal, height and width. Text tokens are ordered along the temporal axis, image patches are processed using a vison encoder, flattened into the same temporal point and each patch is assigned a height and width coordinates. This way Qwen3-VL can naturally read text, recognize the temporal order of how information came to the context but it can also be able to work with 2D positional information on images. Pretty cool right? 
 
-Applying this together with a little trick to teach the model OOD RoPE rotations without actually training on longer sequences. I artificially introduce "positional holes" in the sequences:
+### 1.2 How is this done on the architectural level?
+The whole `d_model` hidden state is split into 3 consecutive parts and each one is rotated differently based on the current position in the 3 specified dimensions of the current token. 
+
+## 1.3 Could MRoPE help some other tasks? Like multiplication or addition?
+I was thinking whether generalizing the concept of MRoPE into a general multidimensional RoPE could help some tasks like addition or multiplication. I have been thinking about these tasks for some time now and I struggled to teach it to models.
+How could this help? After all, we humans also compute long multiplication and long addition with the operands aligned below each other, it is a natural way to express the two operands to be able to effectively compute the algorithm. It makes working with position (digits) much easier.
+
+## 2.1 **Hypothesis:** Applying MRoPE to long addition helps generalization
+Humans compute long addition naturally by aligning the two addition operands below each under and then adding digits of the same significance individually. We could express this positional adjustment using MRoPE:
 ```
 [3][5][8][+]
 [9][1][7]
 [=]
 [1][8][1][5]
 ```
-**Finding:** True
+Each token that is here enclosed by the square brackets has exactly 1 row and 1 column coordinate. I train a general decoder transformer with RoPE on this type of sequences and it learns to model the in-distribution samples very well and performs very well even on unseen in-distribution samples.
+
+I was curious whether we could make it extrapolate. Inspired by the Abacus paper[^1], where they learn absolute per-digit position positional embeddings and than train the model by assigning the samples consecutive ascending indices with a random starting position to allow for length generalization. I do the same. And it works the same as Abacus. In fact, thinking about this, MRoPE applied to addition like this is Abacus reinvented. It seems it is very natural for the model to learn associate the corresponding digits together. In the case of Abacus, the absolute positional encodings help him do this association. In the case of MRoPE, all the corresponding digits have the same column position. 
+
+**Finding:** 2.2 Using MRoPE helps long addition to generalize to unseen lengths and achieves the same results as Abacus[^1]
+
+## 3.1 **Hypothesis:** Models can learn to predict positional information for their own tokens and in this way self-organize their context in terms of positions of tokens
+
+
+
+
+[^1]: Transformers Can Do Arithmetic with the Right Embeddings, McLeish et al, [Link](https://arxiv.org/html/2405.17399v1)
 
