@@ -34,7 +34,19 @@ I was curious whether we could make it extrapolate. Inspired by the Abacus paper
 
 ## 3.1 **Hypothesis:** Models can learn to predict positional information for their own tokens and in this way self-organize their context in terms of positions of tokens
 
+I show this on the task of multiplication, I managed to train a very small transformer using rope2D+sin2D positional embeddings, d_model=248, 2 heads and 4 layers, I represent task in this fashion:
+```
+        col 3    col 2    col 1    col 0
+row 0:     .        .        1        2          <-- A = 12
+row 1:     .        .        1        2   *      <-- B = 12, then '=' ends prompt
+row 2:     .        .        2        4   +      <-- partial 0 = 12 * 2 = 24
+row 3:     .        1        2            =      <-- partial 1 = 12 * 1, shifted <<1 = 12
+row 4:  <eos>       1        4        4          <-- final = 144
+```
 
+where the task and the numbers are represented in the most significant digit order, that is natural to humans, but computation happens in least-significant digit order first, that is the model first predicts digit 4 as token 1, digit 2 as token 2, then * as token 3, and then 2 as token 4, etc.
+
+The model learns this astonishingly, achieves ~80% in free-running accuracy (where we let it predict position in free-running fashion, we do not correct it). model makes mistakes in arithmetics but position is predicted perfectly. This proves models can learn to model dynamic positional processes and predict the positions of their own tokens. In this way, restructure their own input so that the computation is easier.ß
 
 
 [^1]: Transformers Can Do Arithmetic with the Right Embeddings, McLeish et al, [Link](https://arxiv.org/html/2405.17399v1)
