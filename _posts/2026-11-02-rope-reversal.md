@@ -5,6 +5,7 @@ description: I train a Transfomer from scratch to predict the string reversal ta
 status: Finished
 topic: Interpretability, positional encodings
 ---
+## What is string reversal?
 For some time I have been playing around with this string reversal task where the inputs look like this:
 ```
 abcd=dcba
@@ -17,3 +18,4 @@ It seems trivial but to be able to generalise this task, the network needs to le
 
 In particular, the output token `=` has to attend to the input token `d`, output token `d` has to attend to input token `c` and so on. This forms an anti-diagonal shape in the attention head scores matrix.
 
+### 
