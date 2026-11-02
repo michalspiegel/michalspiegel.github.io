@@ -14,7 +14,7 @@ The task is to predict the reversed string `dcba` given the the input string `ab
 
 It seems trivial but to be able to generalise this task, the network needs to learn the following attention pattern in one of his attention heads: 
 
-![[reversal_diagonal.png]]
+![](reversal_diagonal.png)
 
 In particular, the output token `=` has to attend to the input token `d`, output token `d` has to attend to input token `c` and so on. This forms an anti-diagonal shape in the attention head scores matrix.
 
