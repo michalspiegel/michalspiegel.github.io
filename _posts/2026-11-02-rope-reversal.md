@@ -1,12 +1,15 @@
 ---
 layout: post
 title: How does a small Transformer learn to reverse a string?
-description:
+description: I train a Transfomer from scratch to predict the string reversal task. The model learns to leak positional information into the residual stream and performs the positional lookup in the MLP layer.
 status: Finished
 topic: Interpretability, positional encodings
 ---
-
-This is my personal adventure after understanding how RoPE works in Transformers. I plan to investigate this by a series of experiments on small transformers and synthetic data.
+For some time I have been playing around with this string reversal task where the inputs look like this:
+```
+abcd=dcba
+```
+The task is to predict the reversed string `dcba` given the the input string `abcd`.
 
 ## Hypothesis 1: One-layer with one attention head is only able to model one static positional lookup.
 
