@@ -18,4 +18,4 @@ It seems trivial but to be able to generalise this task, the network needs to le
 
 In particular, the output token `=` has to attend to the input token `d`, output token `d` has to attend to input token `c` and so on. This forms an anti-diagonal shape in the attention head scores matrix.
 
-### Is this anti-diagonal necessary for arbitrary Transformer model?
+### Is this anti-diagonal necessary to solve the task for arbitrary Transformer model?
