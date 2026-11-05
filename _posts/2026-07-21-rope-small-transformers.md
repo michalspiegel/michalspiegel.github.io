@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "RoPE expressivity in small transformers"
-description: "I want to know which positional lookups one- and two-layer Transformers can learn — and, more importantly, what mechanism they use to get there."
-status: Work in progress
+title: RoPE expressivity in small transformers
+description: I want to know which positional lookups one- and two-layer Transformers can learn — and, more importantly, what mechanism they use to get there.
+status:
 topic: Interpretability, positional encodings
 ---
 
