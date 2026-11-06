@@ -31,5 +31,5 @@ For the reversal task, the input sequences are the following:
 ```
 [BOS][char_1][char_2]...[char_N][SEP][char_N]...[char_2][char_1][EOS]
 ```
-The sequences always starts with a BOS token, followed by N characterl tokens, a separator token `[SEP]`, followed by the same exact sequence of character tokens, either in the original order for the *copy task* or in the reversed order for the *reversal task*. 
+The sequences always starts with a BOS token, followed by N character tokens, a separator token `[SEP]`, followed by the same exact sequence of character tokens, either in the original order for the *copy task* or in the reversed order for the *reversal task*. I initialize the vocabulary with 256 unique character tokens. The training sequences are always sampled 
 
