@@ -8,6 +8,9 @@ author:
 
 permalink: /blog/:title.html
 markdown: kramdown
+kramdown:
+  parse_block_html: true
+  math_engine: null
 
 exclude:
   - README.md

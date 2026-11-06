@@ -481,6 +481,41 @@ footer {
   margin: 0;
 }
 
+.article-body details {
+  margin: 2em 0;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 3px;
+  background: var(--surface);
+}
+
+.article-body details > summary {
+  padding: 14px 24px;
+  color: var(--accent-dark);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.article-body details[open] > summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.article-body details > :not(summary) {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.article-body details > :last-child {
+  margin-bottom: 18px;
+}
+
+.article-body .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 .article-body li {
   margin: 0.45em 0;
 }
