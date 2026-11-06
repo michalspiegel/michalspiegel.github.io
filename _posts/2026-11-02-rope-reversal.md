@@ -23,7 +23,7 @@ The attention module is the only Transformer component that allows information f
 
 In the next part we will be training a model from scratch to do this task and analyzing it's weights.
 # Methodology
-We train a *Qwen3* type of Transformer architecture across multiple hyperparameter settings: `d_model = {128, 256}, num_heads = {1, 2}, n_layers = {1, 2, 3}`. For the copy task, he input sequences are of the following form:
+I train a *Qwen3* type of Transformer architecture across multiple hyperparameter settings: `d_model = {128, 256}, num_heads = {1, 2}, n_layers = {1, 2, 3}`. For the copy task, he input sequences are of the following form:
 ```
 [BOS][char_1][char_2]...[char_N][SEP][char_1][char_2]...[char_N][EOS]
 ```
@@ -31,5 +31,5 @@ For the reversal task, the input sequences are the following:
 ```
 [BOS][char_1][char_2]...[char_N][SEP][char_N]...[char_2][char_1][EOS]
 ```
-The sequences always starts with a BOS token, followed by N character tokens, a separator token `[SEP]`, followed by the same exact sequence of character tokens, either in the original order for the *copy task* or in the reversed order for the *reversal task*. I initialize the vocabulary with 256 unique character tokens. The training sequences are always sampled 
+The sequences always starts with a BOS token, followed by N character tokens, a separator token `[SEP]`, followed by the same exact sequence of character tokens, either in the original order for the *copy task* or in the reversed order for the *reversal task*. I initialize the vocabulary with 256 unique character tokens. For the training sequences, we sample a random input character sequence length uniformly from $$
 
