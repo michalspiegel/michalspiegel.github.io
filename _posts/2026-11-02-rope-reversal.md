@@ -23,7 +23,7 @@ The attention module is the only Transformer component that allows information f
 
 In the next part we will be training a model from scratch to do this task and analyzing it's weights.
 # Methodology
-I train a *Qwen3* type of Transformer architecture across multiple hyperparameter settings: `d_model = {128, 256}, num_heads = {1, 2}, n_layers = {1, 2, 3}`. For the copy task, he input sequences are of the following form:
+I train a *Qwen3* type of Transformer architecture across multiple hyperparameter settings: `d_model = {128}, num_heads = {1, 2}, n_layers = {1, 2}`. For the copy task, he input sequences are of the following form:
 
 ```
 [BOS][char_1][char_2]...[char_N][SEP][char_1][char_2]...[char_N][EOS]
