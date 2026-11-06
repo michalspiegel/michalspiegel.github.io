@@ -36,6 +36,9 @@ For the reversal task, the input sequences are the following:
 The sequences start with a BOS token, followed by N character tokens, a separator token `[SEP]`, followed by the same exact sequence of character tokens, either in the original order for the *copy task* or in the reversed order for the *reversal task*. 
 
 I initialize the vocabulary with 256 unique character tokens. For the training sequences, we first sample uniformly the length of the input sequence ($seq\_len$) from $[1, 256]$. Next we sample a random subset of characters from the vocabulary. These are used as the alphabet for the sequence. The size of the subset is uniformly sampled from $[1, seq\_len]$ . I constrain the alphabet size to make sure there are characters that repeat in the input sequence. This makes the task harder because the network needs to learn to disambiguate between the identical tokens at different positions. I train these models using AdamW until for a maximum of 40 000 steps. (See more details on hyperparameters in the code.)
+
+We analyze the weights to answer the following questions:
+- 
 # Results
 
 
