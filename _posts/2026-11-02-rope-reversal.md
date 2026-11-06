@@ -31,5 +31,5 @@ For the reversal task, the input sequences are the following:
 ```
 [BOS][rand_1][rand_2]...[rand_N][SEP][rand_N]...[rand_2][rand_1][EOS]
 ```
-The sequences always starts with a BOS token, followed by N randomly sampled tokens, a separator token `[SEP]`, followed by the same exact sequence of random tokens, either in the original order for the *copy task* or in the reversed order for the *reversal task*. 
+The sequences always starts with a BOS token, followed by N randomly sampled tokens, a separator token `[SEP]`, followed by the same exact sequence of random tokens, either in the original order for the *copy task* or in the reversed order for the *reversal task*. The random tokens are always freshly sampled embeddings 
 
