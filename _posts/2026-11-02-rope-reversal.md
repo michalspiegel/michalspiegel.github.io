@@ -39,7 +39,7 @@ I initialize the vocabulary with 256 unique character tokens. For a single train
 
 # Results
 
-##### 
+##### Does positional information leak into the residual stream? Is absolute position and relative offset from the start of the character sequence decodable from the residual stream?
 
 
 
