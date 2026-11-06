@@ -19,7 +19,7 @@ It seems trivial but to be able to generalise this task, the network needs to le
 In particular, the output token `=` has to attend to the input token `d`, output token `d` has to attend to input token `c` and so on. This forms an anti-diagonal shape in the attention head scores matrix.
 
 #### Is this anti-diagonal necessary to solve the task for arbitrary Transformer model?
-The attention module is the only Transformer component that allows information from other tokens to mix. This task heavily depends on previous tokens. The model cannot solve it without looking to the past at exactly these tokens. In reality, the pattern implemented across the whole transformer could be much more messier, however, there must exist a subset of heads that together implement this exact pattern. Since the information about the next token flows strictly from the past tokens highlighted in the image above.
+The attention module is the only Transformer component that allows information from other tokens to mix. This task heavily depends on previous tokens. The model cannot solve it without looking to the past at exactly these tokens. In reality, the transformer could split the pattern between multiple heads and layers, however, there must exist a subset of heads that together compose this exact pattern. Since the information about the next token flows strictly from the past tokens highlighted in the image above. 
 
 In the next part we will be training a model from scratch to do this task and analyzing it's weights.
 # Methodology
@@ -31,5 +31,5 @@ For the reversal task, the input sequences are the following:
 ```
 [BOS][rand_1][rand_2]...[rand_N][SEP][rand_N]...[rand_2][rand_1][EOS]
 ```
-The sequences always starts with a BOS token, followed by N randomly sampled tokens, a separator token `[SEP]`, followed by the same exact sequence of random tokens, either in the original order for the copy task or in the reversed order for the reversal task.
+The sequences always starts with a BOS token, followed by N randomly sampled tokens, a separator token `[SEP]`, followed by the same exact sequence of random tokens, either in the original order for the *copy task* or in the reversed order for the *reversal task*. 
 
