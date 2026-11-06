@@ -25,11 +25,11 @@ In the next part we will be training a model from scratch to do this task and an
 # Methodology
 We train a *Qwen3* type of Transformer architecture across multiple hyperparameter settings: `d_model = {128, 256}, num_heads = {1, 2}, n_layers = {1, 2, 3}`. For the copy task, he input sequences are of the following form:
 ```
-[BOS][rand_1][rand_2]...[rand_N][SEP][rand_1][rand_2]...[rand_N][EOS]
+[BOS][char_1][char_2]...[char_N][SEP][char_1][char_2]...[char_N][EOS]
 ```
 For the reversal task, the input sequences are the following:
 ```
-[BOS][rand_1][rand_2]...[rand_N][SEP][rand_N]...[rand_2][rand_1][EOS]
+[BOS][char_1][char_2]...[char_N][SEP][char_N]...[char_2][char_1][EOS]
 ```
-The sequences always starts with a BOS token, followed by N randomly sampled tokens, a separator token `[SEP]`, followed by the same exact sequence of random tokens, either in the original order for the *copy task* or in the reversed order for the *reversal task*. The random tokens are always freshly sampled embeddings 
+The sequences always starts with a BOS token, followed by N characterl tokens, a separator token `[SEP]`, followed by the same exact sequence of character tokens, either in the original order for the *copy task* or in the reversed order for the *reversal task*. 
 
