@@ -39,5 +39,7 @@ I initialize the vocabulary with 256 unique character tokens. For the training s
 
 # Results
 
-### Does any of the attention heads implement the anti-diagonal pattern? Is it present in all the models
+##### Does any of the attention heads implement the anti-diagonal pattern? Is it present in all the models?
+##### 
+
 
