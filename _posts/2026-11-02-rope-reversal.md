@@ -14,7 +14,7 @@ The task is to predict the reversed string `dcba` given the the input string `ab
 
 It seems trivial but to be able to generalise this task, the network needs to learn the following attention pattern in one of his attention heads: 
 
-![](reversal_diagonal.png)
+![](/assets/images/reversal_diagonal.png)
 
 In particular, the output token `=` has to attend to the input token `d`, output token `d` has to attend to input token `c` and so on. This forms an anti-diagonal shape in the attention head scores matrix.
 
@@ -41,7 +41,7 @@ I initialize the vocabulary with 256 unique character tokens. For a single train
 
 ##### Do any of the architectural hyperparameters (`d_model`, `num_heads`, `n_layers`, training sequence length `N`) affect how well the model can fit the training data?
 
-![](alphabet_accuracy.png)
+![](/assets/images/alphabet_accuracy.png)
 
 I compare the in-distribution accuracy scores on unseen samples across different architecture hyperparameters and alphabet sizes. It seems that 2 Transformer layers are necessary to even the even fit the tasks. 1-layer models struggle and stay barely above random guessing. While the 2-layer models fit perfectly no matter the other hyperparameters.
 
