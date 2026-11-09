@@ -54,9 +54,27 @@ All of the trained models copy models and all the 2-layer reversal models fit th
 
 ### Does absolute positional information leak into the residual stream? Is absolute position decodable from the residual stream?
 I train an array of linear classifier probes (multinomial logistic regression) on various layers and components to predict the absolute position of the current token (from index 0, index 1 up to the last token index `N`).
-	
 
 
+Inspired by [^2], we measure absolute-position leakage in attention pre-softmax scores as the following:
+$$\Delta R^2 = R^2_{\text{full}} - R^2_{\text{base}}$$
+Where $R^2_{\text{base}}$ is saturated relative-offset baseline. The baseline is a linear model predicting $ℓ_{i​j}=f⁡(i−j)+ε$ with $f$ fit as one free parameter per distinct value of $i−j$. The full model adds mean-centered $i$ and $j$ as continuous predictors. We compute the leakage metric on the layer 2 heads of all copy and reversal models. Values are the maximum over final-layer heads; permutation p-values (500 resamples) in parentheses. Below you can see the results:
+
+| $N$ |  copy, 1 head | copy, 2 heads |  reversal, 1 head | reversal, 2 heads |
+| --: | ------------: | ------------: | ----------------: | ----------------: |
+|  10 | 0.0033 (.052) | 0.0017 (.006) | **0.0620** (.002) | **0.0473** (.002) |
+| 100 | 0.0000 (.020) | 0.0001 (.002) | **0.0035** (.002) | **0.0099** (.002) |
+| 200 | 0.0000 (.862) | 0.0000 (.305) | **0.0042** (.002) | **0.0051** (.002) |
+
+Absolute-position leakage $\Delta R^2 = R^2_{\text{full}} - R^2_{\text{base}}$
+(Ruscio et al., arXiv:2606.06160) in the final-layer retrieval head, after
+removing all pairs touching `[BOS]`, `[SEP]` or `[EOS]`. Values are the
+maximum over final-layer heads; permutation p-values (500 resamples) in
+parentheses. All six models are 2-layer, $d_{\text{model}}=128$, and solve
+their task at 1.000 exact-sequence accuracy. Copy requires a constant lookback
+of $N{+}1$, expressible as $f(i-j)$ and therefore available from RoPE alone;
+reversal requires a lookback of $2k$, which grows with position and cannot be
+written as a function of $i-j$.
 
 [^1]: [Attend or Perish: Benchmarking Attention on Algorithmic Reasoning](https://aclanthology.org/2026.blackboxnlp-1.41.pdf) (Spiegel et al., 2026) 
 [^2]: [Where does Absolute Position come from in decoder-only Transformers?](https://arxiv.org/abs/2606.06160)(Ruscio et al., 2026)
