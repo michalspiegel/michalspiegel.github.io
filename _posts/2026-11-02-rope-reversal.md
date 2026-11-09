@@ -5,7 +5,7 @@ description: I train a Transfomer from scratch to predict the string reversal ta
 status: Work in progress
 topic: Interpretability, positional encodings
 ---
-# What is string reversal?
+## What is string reversal?
 For some time I have been playing around with this string reversal task where the inputs look like this:
 ```
 abcd=dcba
@@ -21,12 +21,12 @@ In particular, the output token `=` has to attend to the input token `d`, output
 #### Is this anti-diagonal necessary to solve the task for arbitrary Transformer model?
 The attention module is the only Transformer component that allows information from other tokens to mix. This task heavily depends on previous tokens. The model cannot solve it without looking to the past at exactly these tokens. In reality, the transformer could split the pattern between multiple heads and layers, however, there must exist a subset of heads that together compose this exact pattern. Since the information about the next token flows strictly from the past tokens highlighted in the image above. 
 
-# Motivation
+## Motivation
 
-I find this anti-diagonal pattern quite fascinating. Since, 
+I find this anti-diagonal pattern quite fascinating. In my previous work[^1], I observed that pre-trained models possess a limited capability to represent this pattern and solve the reversal task. Intuitively, it is because this anti-diagonal attention pattern cannot be natively modelled by RoPE. However, this means that the model is able to process positional information that is beyond RoPE. I posit that absolute positional information must leak into the residual stream and flow into the MLP layers which solve the positional task to be able to form the anti-diagonal pattern in a following attention layer. I'm interested in analyzing the exact mechanisms of the leakage and the dynamics in the MLP layer and trying to transfer that to general pre-trained LLMs and see if we can detect similar mechanisms also there.
 
 In the next part we will be training a model from scratch to do this task and analyzing it's weights.
-# Methodology
+## Methodology
 I train a *Qwen3* type of Transformer architecture across multiple hyperparameter settings: `d_model = {128}, num_heads = {1, 2}, n_layers = {1, 2}` and training sequence length `N = {10, 100, 200}`. For the copy task, he input sequences are of the following form:
 
 ```
@@ -43,14 +43,16 @@ I initialize the vocabulary with 256 unique character tokens. For a single train
 
 # Results
 
-##### Do any of the architectural hyperparameters (`d_model`, `num_heads`, `n_layers`, training sequence length `N`) affect how well the model can fit the training data?
+#### Do any of the architectural hyperparameters (`d_model`, `num_heads`, `n_layers`, training sequence length `N`) affect how well the model can fit the training data?
 
 ![](/assets/images/alphabet_accuracy.png)
 
 I compare the in-distribution accuracy scores on unseen samples across different architecture hyperparameters and alphabet sizes. For the copy tasks, even the 1-layer model with a single head fits the task easily. For reversal, it seems that 2 Transformer layers are necessary to even the even fit the tasks. 1-layer models struggle and stay barely above random guessing. While the 2-layer models fit perfectly no matter the other hyperparameters.
 
-##### Does absolute positional information leak into the residual stream? Is absolute position decodable from the residual stream?
+#### Does absolute positional information leak into the residual stream? Is absolute position decodable from the residual stream?
 I train an array of linear classifier probes (multinomial logistic regression) on various layers and components to predict the absolute position of the current token (from index 0, index 1 up to the last token index `N`).
+	
 
 
 
+[^1]:[Attend or Perish: Benchmarking Attention on Algorithmic Reasoning](https://aclanthology.org/2026.blackboxnlp-1.41.pdf) (Spiegel et al., 2026) 
