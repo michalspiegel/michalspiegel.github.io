@@ -18,7 +18,7 @@ It seems trivial but to be able to generalise this task, the network needs to le
 
 In particular, the output token `=` has to attend to the input token `d`, output token `d` has to attend to input token `c` and so on. This forms an anti-diagonal shape in the attention head scores matrix.
 
-#### Is this anti-diagonal necessary to solve the task for arbitrary Transformer model?
+### Is this anti-diagonal necessary to solve the task for arbitrary Transformer model?
 The attention module is the only Transformer component that allows information from other tokens to mix. This task heavily depends on previous tokens. The model cannot solve it without looking to the past at exactly these tokens. In reality, the transformer could split the pattern between multiple heads and layers, however, there must exist a subset of heads that together compose this exact pattern. Since the information about the next token flows strictly from the past tokens highlighted in the image above. 
 
 ## Motivation
@@ -41,15 +41,15 @@ The sequences start with a BOS token, followed by N character tokens, a separato
 
 I initialize the vocabulary with 256 unique character tokens. For a single training run, the sequence length $N$ is fixed. We sample a random subset of characters from the vocabulary. These are used as the alphabet for the sequence. The size of the subset is uniformly sampled from $[1, seq\_len]$ . I constrain the alphabet size to make sure there are characters that repeat in the input sequence. This makes the task harder because the network needs to learn to disambiguate between the identical tokens at different positions. I train these models using AdamW until for a maximum of 80 000 steps. (See more details on hyperparameters in the code.)
 
-# Results
+## Results
 
-#### Do any of the architectural hyperparameters (`d_model`, `num_heads`, `n_layers`, training sequence length `N`) affect how well the model can fit the training data?
+### Do any of the architectural hyperparameters (`d_model`, `num_heads`, `n_layers`, training sequence length `N`) affect how well the model can fit the training data?
 
 ![](/assets/images/alphabet_accuracy.png)
 
 I compare the in-distribution accuracy scores on unseen samples across different architecture hyperparameters and alphabet sizes. For the copy tasks, even the 1-layer model with a single head fits the task easily. For reversal, it seems that 2 Transformer layers are necessary to even the even fit the tasks. 1-layer models struggle and stay barely above random guessing. While the 2-layer models fit perfectly no matter the other hyperparameters.
 
-#### Does absolute positional information leak into the residual stream? Is absolute position decodable from the residual stream?
+### Does absolute positional information leak into the residual stream? Is absolute position decodable from the residual stream?
 I train an array of linear classifier probes (multinomial logistic regression) on various layers and components to predict the absolute position of the current token (from index 0, index 1 up to the last token index `N`).
 	
 
