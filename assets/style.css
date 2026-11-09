@@ -397,7 +397,7 @@ footer {
 }
 
 .article {
-  width: min(750px, calc(100% - 48px));
+  width: min(900px, calc(100% - 64px));
   margin: 0 auto;
   padding: 90px 0 120px;
 }
@@ -430,7 +430,7 @@ footer {
 
 .article-body {
   font-family: var(--serif);
-  font-size: 1.19rem;
+  font-size: 1.25rem;
   line-height: 1.75;
 }
 
@@ -514,6 +514,13 @@ footer {
 .article-body .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.article-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2em auto;
 }
 
 .article-body li {
