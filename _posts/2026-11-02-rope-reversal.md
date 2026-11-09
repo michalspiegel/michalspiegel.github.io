@@ -21,6 +21,10 @@ In particular, the output token `=` has to attend to the input token `d`, output
 #### Is this anti-diagonal necessary to solve the task for arbitrary Transformer model?
 The attention module is the only Transformer component that allows information from other tokens to mix. This task heavily depends on previous tokens. The model cannot solve it without looking to the past at exactly these tokens. In reality, the transformer could split the pattern between multiple heads and layers, however, there must exist a subset of heads that together compose this exact pattern. Since the information about the next token flows strictly from the past tokens highlighted in the image above. 
 
+# Motivation
+
+I find this anti-diagonal pattern quite fascinating. Since, 
+
 In the next part we will be training a model from scratch to do this task and analyzing it's weights.
 # Methodology
 I train a *Qwen3* type of Transformer architecture across multiple hyperparameter settings: `d_model = {128}, num_heads = {1, 2}, n_layers = {1, 2}` and training sequence length `N = {10, 100, 200}`. For the copy task, he input sequences are of the following form:
