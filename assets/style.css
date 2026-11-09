@@ -429,6 +429,9 @@ footer {
 }
 
 .article-body {
+  --sidenote-width: 220px;
+  --sidenote-gap: 28px;
+  position: relative;
   font-family: var(--serif);
   font-size: 1.25rem;
   line-height: 1.75;
@@ -521,6 +524,84 @@ footer {
   max-width: 100%;
   height: auto;
   margin: 2em auto;
+}
+
+/* Footnotes and sidenotes ([^name] in Markdown) */
+.article-body sup[id^="fnref:"] {
+  line-height: 0;
+}
+
+.article-body sup a.footnote {
+  padding: 0 0.12em;
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 0.72em;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.article-body sup.is-active a.footnote {
+  border-radius: 3px;
+  background: var(--surface);
+  color: var(--accent-dark);
+}
+
+.article-body .footnotes {
+  margin-top: 4em;
+  padding-top: 1.2em;
+  border-top: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.article-body .footnotes ol {
+  padding-left: 1.4em;
+}
+
+.article-body .footnotes p {
+  margin: 0.3em 0;
+}
+
+.article-body .sidenote {
+  display: none;
+  position: absolute;
+  left: calc(100% + var(--sidenote-gap));
+  width: var(--sidenote-width);
+  padding-left: 12px;
+  border-left: 2px solid var(--line);
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.article-body.has-sidenotes .sidenote {
+  display: block;
+}
+
+.article-body.has-sidenotes .footnotes {
+  display: none;
+}
+
+.article-body .sidenote.is-active {
+  border-left-color: var(--accent);
+  color: var(--ink);
+}
+
+.article-body .sidenote p {
+  margin: 0 0 0.5em;
+}
+
+.article-body .sidenote p:last-child {
+  margin-bottom: 0;
+}
+
+.article-body .sidenote-num {
+  margin-right: 0.35em;
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .article-body li {
