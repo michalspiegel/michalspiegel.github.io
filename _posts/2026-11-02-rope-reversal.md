@@ -55,4 +55,5 @@ I train an array of linear classifier probes (multinomial logistic regression) o
 
 
 
-[^1]:[Attend or Perish: Benchmarking Attention on Algorithmic Reasoning](https://aclanthology.org/2026.blackboxnlp-1.41.pdf) (Spiegel et al., 2026) 
+[^1]: [Attend or Perish: Benchmarking Attention on Algorithmic Reasoning](https://aclanthology.org/2026.blackboxnlp-1.41.pdf) (Spiegel et al., 2026) 
+[^2]: [Where does Absolute Position come from in decoder-only Transformers?](https://arxiv.org/abs/2606.06160)(Ruscio et al., 2026)
