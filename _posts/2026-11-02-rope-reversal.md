@@ -66,15 +66,7 @@ Where $R^2_{\text{base}}$ is saturated relative-offset baseline. The baseline is
 | 100 | 0.0000 (.020) | 0.0001 (.002) | **0.0035** (.002) | **0.0099** (.002) |
 | 200 | 0.0000 (.862) | 0.0000 (.305) | **0.0042** (.002) | **0.0051** (.002) |
 
-Absolute-position leakage $\Delta R^2 = R^2_{\text{full}} - R^2_{\text{base}}$
-(Ruscio et al., arXiv:2606.06160) in the final-layer retrieval head, after
-removing all pairs touching `[BOS]`, `[SEP]` or `[EOS]`. Values are the
-maximum over final-layer heads; permutation p-values (500 resamples) in
-parentheses. All six models are 2-layer, $d_{\text{model}}=128$, and solve
-their task at 1.000 exact-sequence accuracy. Copy requires a constant lookback
-of $N{+}1$, expressible as $f(i-j)$ and therefore available from RoPE alone;
-reversal requires a lookback of $2k$, which grows with position and cannot be
-written as a function of $i-j$.
+
 
 [^1]: [Attend or Perish: Benchmarking Attention on Algorithmic Reasoning](https://aclanthology.org/2026.blackboxnlp-1.41.pdf) (Spiegel et al., 2026) 
 [^2]: [Where does Absolute Position come from in decoder-only Transformers?](https://arxiv.org/abs/2606.06160)(Ruscio et al., 2026)
