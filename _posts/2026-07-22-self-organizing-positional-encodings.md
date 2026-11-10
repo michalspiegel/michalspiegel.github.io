@@ -4,7 +4,7 @@ title: Self-organizing positional encodings
 description: Training models that learn to reorganize their own input in terms of position information.
 status: Work in progress
 topic: Positional encodings
-published: "false"
+published: false
 ---
 
 I recently stumbled upon multimodal RoPE that is used in Qwen3-VL models to add 2D positional information to image patches. Fascinated by this idea, I wondered whether this could not be applied to text as well. Specifically algorithms like addition and multiplication.
