@@ -55,6 +55,7 @@ All of the trained models copy models and all the 2-layer reversal models fit th
 ### Does absolute positional information leak into the residual stream? Is absolute position decodable from the residual stream?
 I train an array of linear classifier probes (multinomial logistic regression) on various layers and components to predict the absolute position of the current token (from index 0, index 1 up to the last token index `N`).
 
+![](/assets/images/task_contrast.png)
 
 Inspired by [^2], we measure absolute-position leakage in attention pre-softmax scores as the following:
 $$\Delta R^2 = R^2_{\text{full}} - R^2_{\text{base}}$$
