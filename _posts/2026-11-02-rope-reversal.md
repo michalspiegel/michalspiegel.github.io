@@ -4,6 +4,7 @@ title: How does a small Transformer learn to reverse a string?
 description: I train a Transfomer from scratch to predict the string reversal task. The model learns to leak positional information into the residual stream and performs the positional lookup in the MLP layer.
 status: Work in progress
 topic: Interpretability, positional encodings
+published: false
 math: true
 ---
 ## What is string reversal?
