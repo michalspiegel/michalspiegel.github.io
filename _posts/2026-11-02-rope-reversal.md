@@ -55,9 +55,11 @@ I compare the in-distribution accuracy scores on unseen samples across different
 All of the trained models copy models and all the 2-layer reversal models fit the expected diagonal (copy) or anti-diagonal (reversal) attention pattern.
 
 ### Does absolute positional information leak into the residual stream? Is absolute position decodable from the residual stream?
-I train an array of linear classifier probes (multinomial logistic regression) on various layers and components to predict the absolute position of the current token. Below you can see the results:
+I train an array of linear classifier probes (multinomial logistic regression) on various layers and components to predict the absolute position of the current token. I do this an all the 2-layer models with hidden dimension 128, across all the training sequence lengths (`N = {10, 100, 200}`), all of them have 100% accuracy on unseen in-distribution sequences. Below you can see the results:
 
 ![](/assets/images/abs_contrast.png)
+
+The model trained on the copy task seems to exhibit some 
 
 Inspired by [^2], we measure absolute-position leakage in attention pre-softmax scores as the following:
 $$\Delta R^2 = R^2_{\text{full}} - R^2_{\text{base}}$$
