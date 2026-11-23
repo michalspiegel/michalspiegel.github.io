@@ -59,7 +59,9 @@ I train an array of linear classifier probes (multinomial logistic regression) o
 
 ![](/assets/images/abs_contrast.png)
 
-Absolute position is decodable from the model trained on the copy task initially but it sharply decreases for larger training lengths (`N = 100, N = 200`). This might mean that we are not really decoding absolute position but only something that correlates with it a `N = 10`.
+Absolute position is decodable from the model trained on the copy task initially but it sharply decreases for larger training lengths (`N = 100, N = 200`). This might mean that we are not really decoding absolute position but only something that correlates with it at `N = 10`.
+
+On the other hand, 
 
 Inspired by [^2], we measure absolute-position leakage in attention pre-softmax scores as the following:
 $$\Delta R^2 = R^2_{\text{full}} - R^2_{\text{base}}$$
