@@ -59,7 +59,7 @@ I train an array of linear classifier probes (multinomial logistic regression) o
 
 ![](/assets/images/abs_contrast.png)
 
-The model trained on the copy task seems to exhibit some 
+Absolute position is decodable from the model trained on the copy task initially but it sharply decreases for 
 
 Inspired by [^2], we measure absolute-position leakage in attention pre-softmax scores as the following:
 $$\Delta R^2 = R^2_{\text{full}} - R^2_{\text{base}}$$
